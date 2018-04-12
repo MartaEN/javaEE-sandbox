@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Error 403</title>
+        <!--Почему-то не подгружает внешний css-файл-->
+        <link rel="stylesheet" href="styles.css">
+        <style type = "text/css">
+            .error {
+                width: 100%;
+                text-align: center;
+            }
+            .error-code {
+                font-size: 108px;
+                font-weight: 600;
+                margin-top: 20px;
+            }
+            .error-desc {
+                font-size: 24px;
+                font-weight: 600;
+            }
+            .error a {
+                color: black;
+            }
+        </style>
+    </head>
+    <body class="error">
+        <div class="error-code">403</div>
+        <div class="error-desc">Требуется авторизация</div>
+        <br>
+        <a href="sign-in">Авторизоваться</a><br>или<br><a href="main">Вернуться на главную</a>
+    </body>
+</html>

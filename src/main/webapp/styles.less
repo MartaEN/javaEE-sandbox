@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=cyrillic');
+@color: #d9f45f;
+@padding: 40px;
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+main {
+    padding: 0 @padding;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    background-color: @color - #222;
+    padding: 0 (@padding - 15px);
+
+    li {
+        text-transform: uppercase;
+        color: @color - #555;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 600;
+        padding: 12px 15px;
+        list-style: none;
+    }
+
+    li:hover {
+        background-color: @color - #111;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+        color: @color - #555;
+    }
+}
+
+form {
+    input[type="submit"]{
+        background: @color;
+        border-radius: 10px;        
+    }
+}
+
+.error {
+    width: 100%;
+    text-align: center;
+
+    .error-code {
+        font-size: 108px;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+
+    .error-desc {
+        font-size: 24px;
+        font-weight: 600;
+    }
+    
+    a {
+        color: black;
+    }
+}
+
+.debug {
+    color: grey;
+}
