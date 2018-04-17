@@ -1,4 +1,4 @@
-package com.marta.sandbox.servlets;
+package com.marta.sandbox.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +13,7 @@ public class SignInServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("signin.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/pages/signin.jsp").forward(req, resp);
     }
 
     @Override
@@ -23,15 +23,11 @@ public class SignInServlet extends HttpServlet {
 
         Cookie user = new Cookie ( "username" , username);
         user.setHttpOnly(true);
-        user.setMaxAge(60 * 60 * 24 * 365);
+        user.setMaxAge(60 * 60 * 24 );
         resp.addCookie(user);
 
-        req.setAttribute("auth-link","sign-out");
-        req.setAttribute("auth-text", "Выйти");
         req.setAttribute("username", username);
-        req.setAttribute("user-info", "Выполнен вход под именем " + username);
-        req.setAttribute("message", "Signed in");
 
-        req.getRequestDispatcher("/main").forward(req, resp);
+        resp.sendRedirect("checkout");
     }
 }
