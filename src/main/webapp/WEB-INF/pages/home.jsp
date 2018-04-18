@@ -1,8 +1,5 @@
-<%@ page import="com.marta.sandbox.entity.ProductList" %>
-<%@ page import="com.marta.sandbox.entity.Product" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% ProductList list = (ProductList) request.getAttribute("products"); %>
 <html lang="en">
 <head>
     <title>INTERIOR</title>
@@ -29,15 +26,7 @@
                     <a href="#" class="action-label">explore all <i class="fas fa-angle-right"></i></a>
                 </div>
                 <div class="section-trending gallery size370 margin-top">
-                    <%--Получилось только скриптлетом ((( --%>
-                    <%
-                        for (Product p: list.getList()) {
-                            out.print("<a href=\"product?id=" + p.getId() + "\">" +
-                                    "<img src=\"" + p.getImage() + "\" alt=\"" + p.getName() + "\"></a>");
-                        }
-                    %>
-                    <%--Таглибом не получилось!!! Совсем!!!--%>
-                    <c:forEach var="product" items="${products.list}">
+                    <c:forEach var="product" items="${products}">
                         <a href="product?id=${product.id}"><img src="${product.image}" alt="${product.name}" ></a>
                     </c:forEach>
                 </div>

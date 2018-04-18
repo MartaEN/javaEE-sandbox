@@ -1,7 +1,6 @@
 package com.marta.sandbox.servlet;
 
 import com.marta.sandbox.dbservice.DBService;
-import com.marta.sandbox.entity.ProductList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +15,7 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("page", "home");
-        final ProductList list = new ProductList(DBService.getInstance().getRandomProducts(6));
-        req.setAttribute("products", list);
+        req.setAttribute("products", DBService.getInstance().getRandomProducts(6));
         req.getRequestDispatcher("WEB-INF/pages/home.jsp").forward(req, resp);
     }
 }

@@ -1,11 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.marta.sandbox.entity.Product" %>
-<% Product prod = (Product) request.getAttribute("product"); %>
 <html lang="en">
 
 <head>
-    <title><%=prod.getName()%></title>
+    <title>${product.name}</title>
     <jsp:include page="fragments/head.jsp"/>
 </head>
 
@@ -23,21 +21,19 @@
         </ul>
         <div class="product-expo side-by-side padding-site">
             <div class="product-expo-photo">
-                <img class="option-selected" src="<%=prod.getImage()%>" alt="<%=prod.getName() %>">
+                <img class="option-selected" src="${product.image}" alt="${product.name}">
                 <ul class="options-slider">
-                    <%--Таглибом не получилось!!!--%>
                     <li><a href="#"><img src="${product.image}" alt="${product.image}"></a></li>
-                    <%--Только скриптлетами--%>
-                    <li><a href="#"><img src="<%=prod.getImage()%>" alt="<%=prod.getName() %>"></a></li>
-                    <li><a href="#"><img class="current-selection" src="<%=prod.getImage()%>" alt="<%=prod.getName() %>"></a></li>
+                    <li><a href="#"><img src="${product.image}" alt="${product.image}"></a></li>
+                    <li><a href="#"><img class="current-selection" src="${product.image}" alt="${product.image}"></a></li>
                 </ul>
             </div>
             <div class="product-expo-info">
-                <h3><%=prod.getName() %></h3>
+                <h3>${product.name}</h3>
                 <h4 class="hot">hot deal</h4>
-                <div class="price">&#36; <span class="price-focus"><%=prod.getPrice() %></span>/sq</div>
+                <div class="price">&#36; <span class="price-focus">${product.price}</span>/sq</div>
                 <a href="cart" class="red-button">order us <i class="fas fa-angle-right"></i></a>
-                <%=prod.getDescription() %>
+                ${product.description}
             </div>
         </div>
         <div class="horiz-section padding-site">
