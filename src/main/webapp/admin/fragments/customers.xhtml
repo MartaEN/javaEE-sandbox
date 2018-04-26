@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:form id="formCustomers">
+    <p:dataList value="#{customerListView.customers}" var="cust" type="unordered">
+        <f:facet name="header">
+            Our Customers
+        </f:facet>
+        #{cust.name}
+    </p:dataList>
+</h:form>
+
+<p:commandButton value="ADD NEW CUSTOMER"
+                 onclick="PF('newcust').show();"
+                 style="margin: 20px 0; align-self: right"/>
+
+<p:growl id="growlcust" sticky="true" showDetail="true" life="300" />
+
+<p:dialog header="Enter new customer" widgetVar="newcust" resizable="false">
+    <h:form>
+        <p:inputText value="#{customerListView.customerName}" required="true" />
+        <p:commandButton value="Save"
+                         update="growlcust formCustomers"
+                         actionListener="#{customerListView.addCustomer}"
+                         oncomplete="PF('newcust').hide();"
+                         style="margin-left: 10px"/>
+    </h:form>
+</p:dialog>
+
+</html>

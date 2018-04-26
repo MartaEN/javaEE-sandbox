@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+>
+<h:head>
+
+</h:head>
+<h:body>
+
+    <ui:include src="fragments/menu.xhtml"/>
+
+    <h:form>
+
+        <h1>PRODUCT EDIT</h1>
+
+        <p:outputPanel>
+            <p:outputLabel value="PRODUCT ID" />
+        </p:outputPanel>
+        <p:outputPanel style="margin-bottom: 20px;">
+            <p:outputLabel value="#{productSingleView.product.id}" />
+        </p:outputPanel>
+
+        <p:outputPanel>
+            <p:outputLabel value="PRODUCT NAME" />
+        </p:outputPanel>
+        <p:outputPanel style="margin-bottom: 20px;">
+            <p:inputText value="#{productSingleView.product.name}" />
+        </p:outputPanel>
+
+        <p:outputPanel>
+            <p:outputLabel value="PRODUCT CATEGORY" />
+        </p:outputPanel>
+        <p:outputPanel style="margin-bottom: 20px;">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{productSingleView.product.category.name}" /></f:facet>
+                <f:facet name="input">
+                    <h:selectOneMenu value="#{productSingleView.product.category.name}">
+                        <f:selectItems value="#{productSingleView.categories}" var="category" itemLabel="#{category.name}" itemValue="#{category}" />
+                    </h:selectOneMenu>
+                </f:facet>
+            </p:cellEditor>
+        </p:outputPanel>
+
+        <p:outputPanel>
+            <p:outputLabel value="BRAND" />
+        </p:outputPanel>
+        <p:outputPanel style="margin-bottom: 20px;">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{productSingleView.product.brand.name}" /></f:facet>
+                <f:facet name="input">
+                    <h:selectOneMenu value="#{productSingleView.product.brand.name}">
+                        <f:selectItems value="#{productSingleView.brands}" var="brand" itemLabel="#{brand.name}" itemValue="#{brand}" />
+                    </h:selectOneMenu>
+                </f:facet>
+            </p:cellEditor>
+        </p:outputPanel>
+
+        <p:outputPanel>
+            <p:outputLabel value="PRICE" />
+        </p:outputPanel>
+        <p:outputPanel style="margin-bottom: 20px;">
+            <p:inputNumber value="#{productSingleView.product.price}" />
+        </p:outputPanel>
+
+        <p:outputPanel>
+            <p:outputLabel value="DESCRIPTION" />
+        </p:outputPanel>
+        <p:outputPanel style="margin-bottom: 20px;">
+            <p:inputTextarea value="#{productSingleView.product.description}" />
+        </p:outputPanel>
+
+        <p:outputPanel>
+            <p:commandButton value="SAVE" action="#{productSingleView.save}">
+                <f:param name="i" value="2" />
+            </p:commandButton>
+        </p:outputPanel>
+
+    </h:form>
+
+</h:body>
+</html>

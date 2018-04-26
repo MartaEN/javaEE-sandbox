@@ -1,18 +1,18 @@
 package com.marta.sandbox.dbservice;
 
-import com.marta.sandbox.entity.Product;
+import com.marta.sandbox.entity.ProductDummy;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class DBService {
+public class DBServiceDummy {
 
-    private HashMap<String, Product> products;
+    private HashMap<String, ProductDummy> products;
 
-    private static DBService thisInstance = new DBService();
-    public static DBService getInstance () {return thisInstance;}
+    private static DBServiceDummy thisInstance = new DBServiceDummy();
+    public static DBServiceDummy getInstance () {return thisInstance;}
 
-    public List<Product> getRandomProducts(int quantity) {
+    public List<ProductDummy> getRandomProducts(int quantity) {
         return products.entrySet().stream()
                 .filter(e -> !e.getKey().equals("99"))
                 .limit(quantity)
@@ -20,16 +20,16 @@ public class DBService {
                 .collect(Collectors.toList());
     }
 
-    public Product getProductByID(String id) {
+    public ProductDummy getProductByID(String id) {
         return products.get(id);
     }
 
-    private DBService() {
+    private DBServiceDummy() {
         products = new HashMap<>();
 
         products.put(
                 "11",
-                new Product(
+                new ProductDummy(
                         "11",
                         "Fishnet Something",
                         14.99f,
@@ -40,7 +40,7 @@ public class DBService {
         );
         products.put(
                 "21",
-                new Product(
+                new ProductDummy(
                         "21",
                         "Fishnet Armchair",
                         29.99f,
@@ -51,7 +51,7 @@ public class DBService {
         );
         products.put(
                 "31",
-                new Product(
+                new ProductDummy(
                         "31",
                         "Fishnet Lamp",
                         27.99f,
@@ -62,7 +62,7 @@ public class DBService {
         );
         products.put(
                 "41",
-                new Product(
+                new ProductDummy(
                         "41",
                         "Fishnet Bra",
                         23.99f,
@@ -73,7 +73,7 @@ public class DBService {
         );
         products.put(
                 "5",
-                new Product(
+                new ProductDummy(
                         "5",
                         "Fishnet Bowl",
                         9.99f,
@@ -84,7 +84,7 @@ public class DBService {
         );
         products.put(
                 "6",
-                new Product(
+                new ProductDummy(
                         "6",
                         "Fishnet Vase",
                         19.99f,
@@ -95,7 +95,7 @@ public class DBService {
         );
         products.put(
                 "99",
-                new Product(
+                new ProductDummy(
                         "99",
                         "Fishnet Chair",
                         36.7f,

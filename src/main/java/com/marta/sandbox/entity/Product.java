@@ -1,47 +1,84 @@
 package com.marta.sandbox.entity;
 
-public class Product {
+import com.marta.sandbox.enums.Category;
 
-    private String id;
-    private String name;
+import javax.persistence.*;
+
+@Entity
+public class Product extends AbstractEntity {
+
+    @Column (nullable = false)
+    private String name = "";
+
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
+    @ManyToOne
+    private Brand brand;
+
     private float price;
+
     private String image;
+
+    @Column (columnDefinition = "TEXT")
     private String description;
 
-    public Product(String id, String name, float price, String image, String description) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.image = image;
-        this.description = description;
-    }
-
-    public String getId() {
-        return id;
-    }
+    private boolean inStock = false;
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
     public float getPrice() {
         return price;
     }
 
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
     public String getImage() {
         return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getDescription() {
         return description;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+    public void setDescription(String description) {
+        this.description = description;
     }
+
+    public boolean isInStock() {
+        return inStock;
+    }
+
+    public void setInStock(boolean available) {
+        this.inStock = available;
+    }
+
 }

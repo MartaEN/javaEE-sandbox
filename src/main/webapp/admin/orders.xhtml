@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Admin panel</title>
+</h:head>
+<h:body>
+    <ui:include src="fragments/menu.xhtml"/>
+
+    <h:form id="form">
+    <p:growl id="msgs" showDetail="true"/>
+
+    <p:dataTable id="orders" var="order" value="#{orderListView.orders}" editable="true" style="margin-bottom:20px">
+        <f:facet name="header">
+            Dummy Order Processing Panel (editable statuses)
+        </f:facet>
+
+        <p:ajax event="rowEdit" listener="#{orderListView.onRowEdit}" update=":form:msgs" />
+        <p:ajax event="rowEditCancel" listener="#{orderListView.onRowCancel}" update=":form:msgs" />
+        <p:ajax event="cellEdit" listener="#{orderListView.onCellEdit}" update=":form:msgs" />
+
+        <p:column headerText="Order ID">
+            <h:outputText value="#{order.id}" />
+        </p:column>
+
+        <p:column headerText="Customer">
+            <h:outputText value="#{order.customer.name}" />
+        </p:column>
+
+        <p:column headerText="Order Date">
+            <h:outputText value="#{order.date}" />
+        </p:column>
+
+        <p:column headerText="Order Status">
+            <h:outputText value="#{order.status}" />
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{order.status}" /></f:facet>
+                <f:facet name="input">
+                    <h:selectOneMenu value="#{order.status}" style="width:100%">
+                        <f:selectItems value="#{orderListView.statuses}" var="status" itemLabel="#{status}" itemValue="#{status}" />
+                    </h:selectOneMenu>
+                </f:facet>
+            </p:cellEditor>
+        </p:column>
+
+        <p:column style="width:32px">
+            <p:rowEditor />
+        </p:column>
+    </p:dataTable>
+
+    </h:form>
+
+</h:body>
+</html>

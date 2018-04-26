@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:form id="formBrands">
+    <p:dataList value="#{brandListView.brands}" var="brand" type="unordered">
+        <f:facet name="header">
+            Product brands
+        </f:facet>
+        #{brand.name}
+    </p:dataList>
+</h:form>
+
+<p:commandButton value="ADD NEW BRAND"
+                 onclick="PF('newbrand').show();"
+                 style="margin: 20px 0; align-self: right"/>
+
+<p:growl id="growlbrand" sticky="true" showDetail="true" life="300" />
+
+<p:dialog header="Enter new brand" widgetVar="newbrand" resizable="false">
+    <h:form>
+        <p:inputText value="#{brandListView.brandName}" required="true" />
+        <p:commandButton value="Save"
+                         update="growlbrand formBrands"
+                         actionListener="#{brandListView.addBrand}"
+                         oncomplete="PF('newbrand').hide();"
+                         style="margin-left: 10px"/>
+    </h:form>
+</p:dialog>
+
+</html>

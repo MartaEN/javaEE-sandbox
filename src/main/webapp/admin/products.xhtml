@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Admin panel</title>
+</h:head>
+<h:body>
+    <ui:include src="fragments/menu.xhtml"/>
+    <h:form>
+        <p:dataTable value="#{productListView.products}" var="item" rowIndexVar="rowIndex"
+                     style="margin-bottom: 20px;" id="table">
+            <p:column width="30" headerText="№" style="text-align: center;">
+                <p:outputLabel value="#{rowIndex +1}." />
+            </p:column>
+            <p:column width="200" headerText="ID" sortable="true" sortBy="#{item.id}">
+                <p:outputLabel value="#{item.id}" />
+            </p:column>
+            <p:column headerText="NAME" style="width: 100%; text-align: left;" sortable="true" sortBy="#{item.name}">
+                <p:outputLabel value="#{item.name}" />
+            </p:column>
+            <p:column width="200" headerText="CATEGORY" style="text-align: center;" sortable="true" sortBy="#{item.category}">
+                <p:outputLabel value="#{item.category.name}" />
+            </p:column>
+            <p:column width="200" headerText="BRAND" style="text-align: center;" sortable="true" sortBy="#{item.brand}">
+                <p:outputLabel value="#{item.brand.name}" />
+            </p:column>
+            <p:column width="100" headerText="PRICE" style="text-align: center;" sortable="true" sortBy="#{item.brand}">
+                <p:outputLabel value="#{item.price}" />
+            </p:column>
+            <p:column width="80" headerText="IN STOCK" style="text-align: center;" sortable="true" sortBy="#{item.brand}">
+                <p:outputLabel value="#{item.inStock}" />
+            </p:column>
+            <p:column width="80" style="text-align: center;">
+                <p:link value="EDIT" outcome="edit">
+                    <f:param name="id" value="#{item.id}" />
+                    <f:param name="i" value="2" />
+                </p:link>
+            </p:column>
+            <p:column width="80" style="text-align: center;">
+                <p:commandLink title="REMOVE" update="table" value="REMOVE"
+                               actionListener="#{productListView.remove(item)}" />
+            </p:column>
+        </p:dataTable>
+
+        <p:outputPanel style="margin-bottom: 20px;">
+            <p:commandButton value="ADD PRODUCT" update="table"
+                             actionListener="#{productListView.addProduct}" />
+        </p:outputPanel>
+
+    </h:form>
+</h:body>
+</html>
