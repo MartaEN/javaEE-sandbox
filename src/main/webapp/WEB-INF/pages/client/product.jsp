@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html" %>
 <html lang="en">
 
 <head>
@@ -32,7 +33,7 @@
                 <h3>${product.name}</h3>
                 <h4 class="hot">hot deal</h4>
                 <div class="price">&#36; <span class="price-focus">${product.price}</span>/sq</div>
-                <a href="cart" class="red-button">order us <i class="fas fa-angle-right"></i></a>
+                <a href="cart?add-product=${product.id}" class="red-button">order us <i class="fas fa-angle-right"></i></a>
                 ${product.description}
             </div>
         </div>
