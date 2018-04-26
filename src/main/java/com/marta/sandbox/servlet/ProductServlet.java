@@ -1,7 +1,7 @@
 package com.marta.sandbox.servlet;
 
 import com.marta.sandbox.dbservice.DBServiceDummy;
-import com.marta.sandbox.entity.ProductDummy;
+import com.marta.sandbox.entity.Product;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ public class ProductServlet extends HttpServlet {
 
         req.setAttribute("page", "products");
 
-        ProductDummy selectedProduct = DBServiceDummy.getInstance().getProductByID((req.getParameter("id")));
+        Product selectedProduct = DBServiceDummy.getInstance().getProductByID((req.getParameter("id")));
         if (selectedProduct == null) {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Product not found");
         } else {

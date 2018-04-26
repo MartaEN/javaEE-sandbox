@@ -26,7 +26,7 @@
                     <a href="#" class="action-label">explore all <i class="fas fa-angle-right"></i></a>
                 </div>
                 <div class="section-trending gallery size370 margin-top">
-                    <c:forEach var="product" items="${products}">
+                    <c:forEach var="product" items="#{customerService.getRandomProducts(6)}">
                         <a href="product?id=${product.id}"><img src="${product.image}" alt="${product.name}" ></a>
                     </c:forEach>
                 </div>
