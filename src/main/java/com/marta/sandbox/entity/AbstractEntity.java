@@ -11,7 +11,7 @@ public abstract class AbstractEntity implements Serializable {
 
     @Id
     @Column(length = 45)
-    private String id = UUID.randomUUID().toString();
+    protected String id = UUID.randomUUID().toString();
 
     public String getId() {
         return id;

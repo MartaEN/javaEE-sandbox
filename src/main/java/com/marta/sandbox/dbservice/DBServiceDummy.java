@@ -1,5 +1,6 @@
 package com.marta.sandbox.dbservice;
 
+import com.marta.sandbox.entity.Product;
 import com.marta.sandbox.entity.ProductDummy;
 
 import java.util.*;
@@ -7,12 +8,12 @@ import java.util.stream.Collectors;
 
 public class DBServiceDummy {
 
-    private HashMap<String, ProductDummy> products;
+    private HashMap<String, Product> products;
 
     private static DBServiceDummy thisInstance = new DBServiceDummy();
     public static DBServiceDummy getInstance () {return thisInstance;}
 
-    public List<ProductDummy> getRandomProducts(int quantity) {
+    public List<Product> getRandomProducts(int quantity) {
         return products.entrySet().stream()
                 .filter(e -> !e.getKey().equals("99"))
                 .limit(quantity)
@@ -20,7 +21,7 @@ public class DBServiceDummy {
                 .collect(Collectors.toList());
     }
 
-    public ProductDummy getProductByID(String id) {
+    public Product getProductByID(String id) {
         return products.get(id);
     }
 

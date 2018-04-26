@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Product extends AbstractEntity {
 
     @Column (nullable = false)
-    private String name = "";
+    protected String name = "";
 
     @Enumerated(EnumType.STRING)
     private Category category;
@@ -16,12 +16,12 @@ public class Product extends AbstractEntity {
     @ManyToOne
     private Brand brand;
 
-    private float price;
+    protected float price;
 
-    private String image;
+    protected String image;
 
     @Column (columnDefinition = "TEXT")
-    private String description;
+    protected String description;
 
     private boolean inStock = false;
 
