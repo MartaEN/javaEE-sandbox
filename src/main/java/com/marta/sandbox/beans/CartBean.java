@@ -2,6 +2,7 @@ package com.marta.sandbox.beans;
 
 import com.marta.sandbox.entity.Product;
 
+import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import java.util.Map;
 
 @Named("cart")
 @SessionScoped
+@Stateful
 public class CartBean extends AbstractBean {
 
     private Map<Product, Integer> items = new HashMap<>();

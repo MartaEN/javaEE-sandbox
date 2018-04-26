@@ -21,9 +21,14 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        req.getRequestDispatcher("WEB-INF/pages/client/cart.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         Product selectedProduct = DBServiceDummy.getInstance().getProductByID((req.getParameter("id")));
         if(selectedProduct!= null) cart.addItem(selectedProduct, 1);
         req.getRequestDispatcher("WEB-INF/pages/client/cart.jsp").forward(req, resp);
     }
-
 }

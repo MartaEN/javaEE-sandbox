@@ -12,7 +12,7 @@
         <div class="horiz-section padding-site">
             <h3>Your cart</h3>
             <p>...page under development...</p>
-            <table style="border: 1px solid black">
+            <table style="border: 1px solid black; margin-bottom:40px;" >
                 <tr>
                     <td>id</td>
                     <td>Product name</td>
@@ -20,14 +20,16 @@
                     <td>Quantity</td>
                     <td>Total cost</td>
                 </tr>
+                <c:forEach var="line" items="#{cart.items}">
+                    <tr>
+                        <td>${line.key.id}</td>
+                        <td>${line.key.name}</td>
+                        <td>${line.key.price}</td>
+                        <td>${line.value}</td>
+                        <td>${line.value} * ${line.key.price}</td>
+                    </tr>
+                </c:forEach>
             </table>
-            <c:forEach var="line" items="#{cart.items}">
-                <tr><td>${line.key.id}</td></tr>
-                <tr><td>${line.key.name}</td></tr>
-                <tr><td>${line.key.price}</td></tr>
-                <tr><td>${line.value}</td></tr>
-                <tr><td> ... </td></tr>
-            </c:forEach>
             <a href="checkout" class="red-button">checkout <i class="fas fa-angle-right"></i></a>
         </div>
     </div>

@@ -33,7 +33,11 @@
                 <h3>${product.name}</h3>
                 <h4 class="hot">hot deal</h4>
                 <div class="price">&#36; <span class="price-focus">${product.price}</span>/sq</div>
-                <a href="cart?add-product=${product.id}" class="red-button">order us <i class="fas fa-angle-right"></i></a>
+                <form method="post" action="cart">
+                    <input type="hidden" name="id" value="${product.id}">
+                    <input type="submit" value="order us">
+                    <%--<a href="cart?add-product=${product.id}" class="red-button">order us <i class="fas fa-angle-right"></i></a>--%>
+                </form>
                 ${product.description}
             </div>
         </div>
