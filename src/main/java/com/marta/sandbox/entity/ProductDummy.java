@@ -1,47 +1,13 @@
 package com.marta.sandbox.entity;
 
-public class ProductDummy {
-
-    private String id;
-    private String name;
-    private float price;
-    private String image;
-    private String description;
+public class ProductDummy extends Product {
 
     public ProductDummy(String id, String name, float price, String image, String description) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.image = image;
-        this.description = description;
+        super.id = id;
+        super.name = name;
+        super.price = price;
+        super.image = image;
+        super.description = description;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
-    }
 }
