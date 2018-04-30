@@ -41,6 +41,8 @@ public class Product extends AbstractEntity {
         this.category = category;
     }
 
+    public void setCategory (String category) { this.category = Category.valueOf(category); }
+
     public Brand getBrand() {
         return brand;
     }
