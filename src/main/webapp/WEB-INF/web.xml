@@ -39,4 +39,20 @@
         <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
     </listener>
 
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>interior-sandbox</realm-name>
+    </login-config>
+
+    <security-role>
+        <role-name>ADMIN</role-name>
+    </security-role>
+    <security-role>
+        <role-name>CUSTOMER</role-name>
+    </security-role>
+
+    <!--<session-config>-->
+        <!--<session-timeout>1</session-timeout>-->
+    <!--</session-config>-->
+
 </web-app>

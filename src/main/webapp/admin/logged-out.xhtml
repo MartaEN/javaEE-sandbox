@@ -6,16 +6,11 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <title>Admin panel</title>
-</h:head>
 <h:body>
-    <ui:include src="fragments/menu.xhtml"/>
-    <h2><h:outputLabel value="Welcome to admin panel"/></h2>
-    <p><h:outputLabel value="Logged in as #{p:remoteUser()}"/></p>
-    <p><h:outputLabel value="User logged in: #{userSession.userLoggedIn}"/></p>
-    <h:form>
-        <p:commandButton value="Logout"  action="#{userSession.logout}" />
-    </h:form>
+
+    <p><h:outputLabel value="Logged out #{p:remoteUser()}"/></p>
+    <h:outputLink value="../home">To the shop site</h:outputLink>
+
 </h:body>
+
 </html>
