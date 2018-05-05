@@ -2,8 +2,9 @@ package com.marta.sandbox.logger;
 
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
+import java.io.Serializable;
 
-public class DebugLogger {
+public class DebugLogger implements Serializable {
 
     @AroundInvoke
     public Object printLog (InvocationContext ctx) throws Exception {
